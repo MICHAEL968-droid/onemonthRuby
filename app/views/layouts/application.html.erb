@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Omruby</title>
+    <title>Rails simple</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= link_to "home", root_path %>
-    <%= link_to "about", about_path %>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-toggleable-md navbar-inverse  bg-black">
+      <div class="container">
+        <%= link_to "Simple rails ", root_path, class: "navbar-brand" %>
+        
+            <ul class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></ul>
+            <ul class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></ul>
+
+            <ul class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></ul>
+        
+      </div>
+    </nav>
+
+    <!-- Page Content -->
     <%= yield %>
+    
+    <!-- Footer -->
+    <footer class="small text-muted">
+      <div class="container">
+        <hr>
+        <center>
+          <p>© 2020 Rails</p>
+        </center>
+      </div>
+    </footer>
+
   </body>
 </html>
