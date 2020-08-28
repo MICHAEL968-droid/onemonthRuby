@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag  'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -19,9 +19,26 @@
             <ul class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></ul>
 
             <ul class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></ul>
+            <% if user_signed_in? %>
+              <ul class ="nav-item pull-md-right"> <%= link_to "Log out",
+                signout_path, method: :delete, class: "nav-link" %>
+              </ul>
+            <% else %>
+              <ul class ="nav-item pull-md-right"> <%= link_to "Sign up",
+                signup_path, class: "nav-link" %>
+              </ul>
+              <ul class ="nav-item pull-md-right"> <%= link_to "Sign in",
+                signin_path, class: "nav-link" %>
+              </ul>
+            <% end %>
+
         
       </div>
     </nav>
+
+    <%flash.each do |name,message| %>
+      <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
+    <% end %>
 
     <!-- Page Content -->
     <%= yield %>
